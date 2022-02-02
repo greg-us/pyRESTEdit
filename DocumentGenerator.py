@@ -3,7 +3,12 @@ from configparser import RawConfigParser
 from docxtpl import DocxTemplate
 from docx2pdf import convert as convertPDF
 from pydocx import PyDocX
-import pythoncom
+
+try:
+    import pythoncom
+    pythoncomExists = True
+except ImportError:
+    pythoncomExists = False
 
 class DocumentGenerator:
     
@@ -13,7 +18,8 @@ class DocumentGenerator:
     def pdfFromTemplate(self, template, target, data):
         docXFileName = target + '.docx'
         self.docxFromTemplate(template, docXFileName, data)
-        pythoncom.CoInitialize()
+        if pythoncomExists:
+            pythoncom.CoInitialize()
         
         convertPDF( path.join(self.config.get('FileSystem', 'spooler'), docXFileName), path.join(self.config.get('FileSystem', 'spooler'), target) )
         

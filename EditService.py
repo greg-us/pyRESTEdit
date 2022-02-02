@@ -2,6 +2,7 @@ from configparser import RawConfigParser
 from DocumentGenerator import DocumentGenerator
 import flask
 import base64
+from waitress import serve
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -54,4 +55,5 @@ def editDocument():
 if __name__ == "__main__":
     config = RawConfigParser()
     config.read(r'./config.txt')
-    app.run()
+    
+    serve(app, host='0.0.0.0', port=5000)
