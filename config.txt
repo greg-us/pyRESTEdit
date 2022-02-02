@@ -1,0 +1,10 @@
+[FileSystem]
+models = ./models
+spooler = ./temp
+archives = ./archives
+
+[SMTP]
+server = null
+port = null
+login = null
+passwors = null
