@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "819f6c93-c09a-45ae-aa1a-888f98995015",
+		"name": "Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Edit Document",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"mode\"     : \"print\", \r\n    \"template\" : \"tests/test.docx\", \r\n    \"fileName\" : \"test2.docx\", \r\n    \"data\"     : \r\n    { \r\n        \"test1\" : \"Test value\", \r\n        \"test2\" : 1 \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/edit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Document Base64",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"mode\"     : \"file\", \r\n    \"template\" : \"tests/test.docx\", \r\n    \"fileName\" : \"test2.docx\", \r\n    \"data\"     : \r\n    { \r\n        \"test1\" : \"Test value\", \r\n        \"test2\" : 1 \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/edit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Document Mail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"mode\"     : \"email\", \r\n    \"template\" : \"tests/test.docx\", \r\n    \"fileName\" : \"FichierJoint.pdf\",\r\n    \"mail_template\" : \"tests/test_email.html\", \r\n    \"mail_subject\" : \"Test sending PDF\", \r\n    \"mail_to\" : \"test@mail.com\",  \r\n    \"data\"     : \r\n    {\r\n        \"test1\" : \"Test value\", \r\n        \"test2\" : 1 \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/edit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Document Mail Template",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"mode\"     : \"email\", \r\n    \"template\" : \"tests/test.docx\", \r\n    \"fileName\" : \"FichierJoint.pdf\",\r\n    \"mail_template\" : \"tests/test.docx\", \r\n    \"mail_subject\" : \"Test sending template mail\", \r\n    \"mail_to\" : \"test@mail.com\",  \r\n    \"data\"     : \r\n    {\r\n        \"test1\" : \"Test value\", \r\n        \"test2\" : 1 \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/edit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Document Incomplete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"mode\"     : \"print\", \r\n    \"template\" : \"tests/test.docx\", \r\n    \"data\"     : \r\n    { \r\n        \"test1\" : \"Test value\", \r\n        \"test2\" : 1 \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/edit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Document Mail Incomplete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"mode\"     : \"email\", \r\n    \"template\" : \"tests/test.docx\", \r\n    \"fileName\" : \"FichierJoint.pdf\",\r\n    \"mail_template\" : \"tests/test_email.html\", \r\n    \"data\"     : \r\n    {\r\n        \"test1\" : \"Test value\", \r\n        \"test2\" : 1 \r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/edit/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"edit",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

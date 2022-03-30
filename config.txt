@@ -1,10 +1,15 @@
+[Service]
+port = 5000
+
 [FileSystem]
 models = ./models
 spooler = ./temp
 archives = ./archives
 
 [SMTP]
-server = null
-port = null
-login = null
-passwors = null
+server = smtp_server.com
+port = 25
+authentification = off
+login = user@mail.com
+password = 
+mailFrom = noreply@mail.com
