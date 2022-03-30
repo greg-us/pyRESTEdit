@@ -5,6 +5,7 @@ from os import path
 from waitress import serve
 import flask
 import base64
+import shutil
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -57,8 +58,12 @@ def editDocument():
         elif output.endswith('.html') or output.endswith('.htm') :
             out_file = gen.htmlFromTemplate(template, output,  data)
     
+    if mode == 'print' :
+        shutil.copyfile(out_file, path.join(config.get('FileSystem', 'archives'), output))
+        out_file = path.join(config.get('FileSystem', 'archives'), output)
+            
     #prepare response with or without data
-    wsResponse = flask.jsonify({'result':output})
+    wsResponse = flask.jsonify({'result':out_file})
     if mode == 'file' :
         with open(out_file, 'rb') as f:
             fileData = f.read()
