@@ -26,8 +26,8 @@ class DocumentGenerator:
         if os.name == 'nt':
             convertPDF( path.join(self.config.get('FileSystem', 'spooler'), docXFileName), path.join(self.config.get('FileSystem', 'spooler'), target) )
         else:
-            os.system("cd " + self.config.get('FileSystem', 'spooler') + " && lowriter --convert-to pdf " + docXFileName)
-            os.system("mv " +path.join(self.config.get('FileSystem', 'spooler'), docXFileName) + ".pdf " + path.join(self.config.get('FileSystem', 'spooler'), target) )
+            os.system("lowriter --convert-to pdf" +str(" ") + path.join(self.config.get('FileSystem', 'spooler'), docXFileName))
+            os.system("mv \"" + docXFileName + ".pdf\" " + path.join(self.config.get('FileSystem', 'spooler'), target) )
         
         return path.join(self.config.get('FileSystem', 'spooler'), target)
     
