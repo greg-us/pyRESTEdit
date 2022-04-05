@@ -1,3 +1,4 @@
+import os
 from os import path
 from configparser import RawConfigParser
 from docxtpl import DocxTemplate
