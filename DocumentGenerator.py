@@ -5,6 +5,7 @@ from docxtpl import DocxTemplate
 if os.name == 'nt':
     from docx2pdf import convert as convertPDF
 from pydocx import PyDocX
+import shutil
 
 try:
     import pythoncom
@@ -26,8 +27,8 @@ class DocumentGenerator:
         if os.name == 'nt':
             convertPDF( path.join(self.config.get('FileSystem', 'spooler'), docXFileName), path.join(self.config.get('FileSystem', 'spooler'), target) )
         else:
-            os.system("lowriter --convert-to pdf" +str(" ") + path.join(self.config.get('FileSystem', 'spooler'), docXFileName))
-            os.system("mv \"" + docXFileName + ".pdf\" " + path.join(self.config.get('FileSystem', 'spooler'), target) )
+            os.system("lowriter --convert-to pdf" +str(" ") + path.join(self.config.get('FileSystem', 'spooler'), docXFileName) + " --outdir " + self.config.get('FileSystem', 'spooler'))
+            os.system("mv " + path.join(self.config.get('FileSystem', 'spooler'), docXFileName) + ".pdf " + path.join(self.config.get('FileSystem', 'spooler'), target) )
         
         return path.join(self.config.get('FileSystem', 'spooler'), target)
     
