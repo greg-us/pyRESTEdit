@@ -1,7 +1,8 @@
 from os import path
 from configparser import RawConfigParser
 from docxtpl import DocxTemplate
-from docx2pdf import convert as convertPDF
+if os.name == 'nt':
+    from docx2pdf import convert as convertPDF
 from pydocx import PyDocX
 
 try:
@@ -21,7 +22,10 @@ class DocumentGenerator:
         if pythoncomExists:
             pythoncom.CoInitialize()
         
-        convertPDF( path.join(self.config.get('FileSystem', 'spooler'), docXFileName), path.join(self.config.get('FileSystem', 'spooler'), target) )
+        if os.name == 'nt':
+            convertPDF( path.join(self.config.get('FileSystem', 'spooler'), docXFileName), path.join(self.config.get('FileSystem', 'spooler'), target) )
+        else
+            os.system("lowriter --convert-to pdf" +str(" ") + path.join(self.config.get('FileSystem', 'spooler'), docXFileName))
         
         return path.join(self.config.get('FileSystem', 'spooler'), target)
     
