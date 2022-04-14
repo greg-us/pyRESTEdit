@@ -62,14 +62,6 @@ def editDocument():
         shutil.copyfile(out_file, path.join(config.get('FileSystem', 'archives'), output))
         out_file = path.join(config.get('FileSystem', 'archives'), output)
             
-    #prepare response with or without data
-    wsResponse = flask.jsonify({'result':out_file})
-    if mode == 'file' :
-        with open(out_file, 'rb') as f:
-            fileData = f.read()
-            fileDataB64 = base64.b64encode(fileData)
-            wsResponse = flask.jsonify({'result':out_file, 'file':fileDataB64.decode("utf-8")})
-    
     #Send email if selected mode is email
     if mode == 'email' :
         mail_content     = ''
@@ -87,6 +79,13 @@ def editDocument():
         mail = Mailer(config)
         mail.sendMail(mail_to, mail_subject, mail_content, out_file)
     
+    #prepare response with or without data
+    wsResponse = flask.jsonify({'result':out_file})
+    with open(out_file, 'rb') as f:
+        fileData = f.read()
+        fileDataB64 = base64.b64encode(fileData)
+        wsResponse = flask.jsonify({'result':out_file, 'file':fileDataB64.decode("utf-8")})
+        
     return wsResponse, 200
 
 if __name__ == "__main__":
